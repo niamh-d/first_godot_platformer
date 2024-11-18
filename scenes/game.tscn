@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://cl3qhpj0hl05t"]
+[gd_scene load_steps=19 format=4 uid="uid://cl3qhpj0hl05t"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_28u3t"]
 [ext_resource type="PackedScene" uid="uid://bj3spc5eg2yos" path="res://scenes/player.tscn" id="1_bexmo"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://74ogwtb1uw3q" path="res://scenes/kill_zone.tscn" id="5_0cqtc"]
 [ext_resource type="PackedScene" uid="uid://dbd2oe4hl7c2k" path="res://scenes/slime.tscn" id="6_sbyrk"]
 [ext_resource type="FontFile" uid="uid://b5bfljty0ryia" path="res://assets/fonts/PixelOperator8.ttf" id="7_jftt3"]
+[ext_resource type="Script" path="res://scripts/end_coin.gd" id="8_em5ah"]
 [ext_resource type="FontFile" uid="uid://lljr11eufl1g" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="9_1i610"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6nvl7"]
@@ -357,14 +358,27 @@ unique_name_in_owner = true
 script = ExtResource("1_28u3t")
 
 [node name="ScoreLabel" type="Label" parent="GameManager"]
-offset_left = 556.0
-offset_top = -133.0
-offset_right = 659.0
-offset_bottom = -114.0
+z_index = 1
+offset_left = 543.0
+offset_top = -125.0
+offset_right = 640.0
+offset_bottom = -106.0
 theme_override_colors/font_color = Color(0.145098, 0.0627451, 0.784314, 1)
 theme_override_fonts/font = ExtResource("9_1i610")
 theme_override_font_sizes/font_size = 8
-text = "You collected X coins!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CongratsLabel" type="Label" parent="GameManager"]
+z_index = 1
+offset_left = 528.0
+offset_top = -151.0
+offset_right = 653.0
+offset_bottom = -132.0
+theme_override_colors/font_color = Color(0.145098, 0.0627451, 0.784314, 1)
+theme_override_fonts/font = ExtResource("7_jftt3")
+theme_override_font_sizes/font_size = 8
+text = "Make sure to get that last coin!"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -443,12 +457,12 @@ rotation = 1.57079
 position = Vector2(835, -12)
 rotation = 1.57079
 
-[node name="Coin11" parent="Coins" instance=ExtResource("4_2esun")]
-position = Vector2(633, -90)
-rotation = 1.57079
-
 [node name="Coin7" parent="Coins" instance=ExtResource("4_2esun")]
 position = Vector2(-9, 89)
+
+[node name="EndCoin" parent="Coins" instance=ExtResource("4_2esun")]
+position = Vector2(565, -89)
+script = ExtResource("8_em5ah")
 
 [node name="Slime" parent="." instance=ExtResource("6_sbyrk")]
 position = Vector2(599, 68)
@@ -484,16 +498,4 @@ offset_bottom = -32.0
 theme_override_colors/font_color = Color(0.145098, 0.0627451, 0.784314, 1)
 theme_override_fonts/font = ExtResource("7_jftt3")
 theme_override_font_sizes/font_size = 8
-text = "Almost there!"
-
-[node name="Label4" type="Label" parent="Labels"]
-offset_left = 543.0
-offset_top = -145.0
-offset_right = 673.0
-offset_bottom = -129.0
-theme_override_colors/font_color = Color(0.145098, 0.0627451, 0.784314, 1)
-theme_override_fonts/font = ExtResource("7_jftt3")
-theme_override_font_sizes/font_size = 8
-text = "Hooray! You made it!"
-horizontal_alignment = 1
-autowrap_mode = 2
+text = "Almost there..."
